@@ -7,10 +7,12 @@
         <language>en</language>
         <pubDate>Fri, 24 Sep 2021 21:40:14 +0800</pubDate>
         <lastBuildDate>Fri, 24 Sep 2021 21:40:14 +0800</lastBuildDate>
+        <category>秋招</category>
         <item>
             <guid isPermalink="true">https://barryrun.github.io/2021/09/24/%E7%A7%8B%E6%8B%9B%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93/</guid>
             <title>秋招阶段性总结</title>
             <link>https://barryrun.github.io/2021/09/24/%E7%A7%8B%E6%8B%9B%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93/</link>
+            <category>秋招</category>
             <pubDate>Fri, 24 Sep 2021 21:40:14 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;今天接到了自己秋招的第一个意向，欣喜之余也感到了一丝轻松 —— 压力终于小了一些，可以做一些自己一直以来想做的事情了。前段时间回顾了自己大学以来的学习，似乎都是以考试 / 升学 / 面试为目的，这样显然有诸多不好的地方，其中最为明显的一点就是遗忘的非常快，基本上过了要用的时间就忘了，很难做到积累；现在做 Deep Learning 的论文，就非常后悔之前高数的基础没有打牢。&lt;/p&gt;
 &lt;p&gt;搭建这个博客的目的其实也比较单纯，一是形成知识的输出，加强自己的理解与记忆；二是了解一下前后端开发上的一些基础知识，毕竟一个算法工程师却不懂工程是有一些说不过去的。初步的话就直接使用了 github 的免费私人站点，搭配 hexo 可以说是方便至极。后续应该会尝试自己去走通搭建 + 部署这一条路，想想本科时候就有很多同学会这些了，实在是有一些羞愧。&lt;/p&gt;

@@ -1,15 +1,20 @@
 <?xml version="1.0"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://barryrun.github.io</id>
-    <title>Rhys&#39; blog</title>
-    <link href="https://barryrun.github.io" />
-    <updated>2021-09-24T13:40:14.000Z</updated>
-    <category term="秋招" />
-    <entry>
-        <id>https://barryrun.github.io/2021/09/24/%E7%A7%8B%E6%8B%9B%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93/</id>
-        <title>秋招阶段性总结</title>
-        <link rel="alternate" href="https://barryrun.github.io/2021/09/24/%E7%A7%8B%E6%8B%9B%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93/"/>
-        <content type="html">&lt;p&gt;今天接到了自己秋招的第一个意向，欣喜之余也感到了一丝轻松 —— 压力终于小了一些，可以做一些自己一直以来想做的事情了。前段时间回顾了自己大学以来的学习，似乎都是以考试 / 升学 / 面试为目的，这样显然有诸多不好的地方，其中最为明显的一点就是遗忘的非常快，基本上过了要用的时间就忘了，很难做到积累；现在做 Deep Learning 的论文，就非常后悔之前高数的基础没有打牢。&lt;/p&gt;
+<rss version="2.0">
+    <channel>
+        <title>Rhys&#39; blog • Posts by &#34;秋招&#34; tag</title>
+        <link>https://barryrun.github.io</link>
+        <description></description>
+        <language>en</language>
+        <pubDate>Fri, 24 Sep 2021 21:40:14 +0800</pubDate>
+        <lastBuildDate>Fri, 24 Sep 2021 21:40:14 +0800</lastBuildDate>
+        <category>秋招</category>
+        <item>
+            <guid isPermalink="true">https://barryrun.github.io/2021/09/24/%E7%A7%8B%E6%8B%9B%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93/</guid>
+            <title>秋招阶段性总结</title>
+            <link>https://barryrun.github.io/2021/09/24/%E7%A7%8B%E6%8B%9B%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93/</link>
+            <category>秋招</category>
+            <pubDate>Fri, 24 Sep 2021 21:40:14 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;今天接到了自己秋招的第一个意向，欣喜之余也感到了一丝轻松 —— 压力终于小了一些，可以做一些自己一直以来想做的事情了。前段时间回顾了自己大学以来的学习，似乎都是以考试 / 升学 / 面试为目的，这样显然有诸多不好的地方，其中最为明显的一点就是遗忘的非常快，基本上过了要用的时间就忘了，很难做到积累；现在做 Deep Learning 的论文，就非常后悔之前高数的基础没有打牢。&lt;/p&gt;
 &lt;p&gt;搭建这个博客的目的其实也比较单纯，一是形成知识的输出，加强自己的理解与记忆；二是了解一下前后端开发上的一些基础知识，毕竟一个算法工程师却不懂工程是有一些说不过去的。初步的话就直接使用了 github 的免费私人站点，搭配 hexo 可以说是方便至极。后续应该会尝试自己去走通搭建 + 部署这一条路，想想本科时候就有很多同学会这些了，实在是有一些羞愧。&lt;/p&gt;
 &lt;p&gt;秋招目前是接近尾声了，这篇博客就简单记录一下自己秋招的进程以及一些经验吧。&lt;/p&gt;
 &lt;h4 id=&#34;秋招进程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#秋招进程&#34;&gt;#&lt;/a&gt; 秋招进程&lt;/h4&gt;
@@ -90,29 +95,7 @@
 &lt;p&gt;最后是智力题、概率题，直接牛客、leetcode、知乎、百度所有能收集到的题目刷一遍就好。&lt;/p&gt;
 &lt;h3 id=&#34;写在最后&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#写在最后&#34;&gt;#&lt;/a&gt; 写在最后&lt;/h3&gt;
 &lt;p&gt;如果你目前离秋招还有一段时间的话，一定要注意安排好自己的事件。我的秋招几乎与赶 AAAI 论文同步进行，同期还在实习，这就导致了我精力完全不够分配，前期的很多面试都由于准备不充分而或多或少存在一些问题。一个阶段做一个阶段的事情吧，如果我的论文在 7 月之前就搞定了，那今年的 7、8 月份我也就不至于这么痛苦，也就不至于到现在只有 1 个 offer 了。好在是暂时有个归宿了，后面再继续加油。&lt;/p&gt;
-</content>
-        <category term="秋招" />
-        <updated>2021-09-24T13:40:14.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://barryrun.github.io/2021/09/05/hello-world/</id>
-        <title>Hello World</title>
-        <link rel="alternate" href="https://barryrun.github.io/2021/09/05/hello-world/"/>
-        <content type="html">&lt;p&gt;Welcome to &lt;a href=&#34;https://hexo.io/&#34;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&#34;https://hexo.io/docs/&#34;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&#34;https://hexo.io/docs/troubleshooting.html&#34;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&#34;https://github.com/hexojs/hexo/issues&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
-&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo new &lt;span class=&#34;string&#34;&gt;&amp;quot;My New Post&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/writing.html&#34;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/server.html&#34;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/generating.html&#34;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/one-command-deployment.html&#34;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-        <updated>2021-09-05T11:01:26.846Z</updated>
-    </entry>
-</feed>
+ ]]></description>
+        </item>
+    </channel>
+</rss>
