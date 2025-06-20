@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,30 +12,266 @@
             --primary-color: #2196F3;
             --hover-color: #1976D2;
             --text-color: #333;
-            --bg-color: #f5f5f5;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --border-color: #e0e0e0;
+            --border-color: #e2e8f0;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.07);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         body {
-            position: relative;
-            margin: 0 auto;
-            padding: 2rem;
-            max-width: 1000px;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.4;
             color: var(--text-color);
             background: var(--bg-color);
+            padding: 0.8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
+        .main-container {
+            display: grid;
+            grid-template-columns: 350px 1fr 300px;
+            gap: 1rem;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-card h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .profile-card p {
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+            justify-content: center;
+        }
+
+        .social-links img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.2);
+        }
+
+        /* About Me */
+        .about-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .about-section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .about-section p {
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        /* Section Headers */
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 0.8rem;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 1em;
+            background: linear-gradient(135deg, var(--primary-color), var(--hover-color));
+            border-radius: 2px;
+        }
+
+        /* Publications - Featured */
+        .featured-publications {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            flex: 1;
+        }
+
+        .publication-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-item h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+            color: var(--text-color);
+        }
+
+        .publication-item .authors {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0.2rem;
+        }
+
+        .publication-item .venue {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .publication-item .links {
+            font-size: 0.7rem;
+        }
+
+        .publication-item .links a {
+            margin-right: 0.6rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* News Section */
+        .news-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .news-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.8rem;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.75rem;
+        }
+
+        .news-content {
+            color: #666;
+            margin-top: 0.2rem;
+            line-height: 1.3;
+        }
+
+        /* Contests & Awards */
+        .contests-section, .awards-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .contest-item, .award-item {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.8rem;
+        }
+
+        .contest-item:last-child, .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .contest-item strong, .award-item strong {
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .contest-item small, .award-item small {
+            font-size: 0.7rem;
+            color: #666;
+        }
+
+        /* Links */
         a {
             color: var(--primary-color);
             text-decoration: none;
@@ -43,164 +280,111 @@
 
         a:hover {
             color: var(--hover-color);
+            text-decoration: underline;
         }
 
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 2rem 0 1rem;
-            color: var(--text-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
+        /* Scrollbar styling */
+        .main-content::-webkit-scrollbar, .sidebar::-webkit-scrollbar, .profile-section::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .profile-container {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+        .main-content::-webkit-scrollbar-track, .sidebar::-webkit-scrollbar-track, .profile-section::-webkit-scrollbar-track {
+            background: transparent;
         }
 
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
+        .main-content::-webkit-scrollbar-thumb, .sidebar::-webkit-scrollbar-thumb, .profile-section::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+            transition: background 0.3s ease;
         }
 
-        .profile-info {
-            flex: 1;
+        .main-content::-webkit-scrollbar-thumb:hover, .sidebar::-webkit-scrollbar-thumb:hover, .profile-section::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.2);
         }
 
-        .profile-info h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
+        /* 隐藏滚动条但保持滚动功能 */
+        .main-content, .sidebar, .profile-section {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
+        /* 确保内容适应容器高度 */
+        .sidebar {
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+
+        .main-content {
+            max-height: calc(100vh - 4rem);
+        }
+
+        .profile-section {
+            max-height: calc(100vh - 4rem);
+        }
+
+        /* Footer & Clustrmaps */
+        .bottom-section {
             margin-top: 1rem;
-        }
-
-        .social-links img {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links img:hover {
-            transform: scale(1.1);
-        }
-
-        .section {
-            margin-bottom: 2rem;
-        }
-
-        .paper {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             display: flex;
-            gap: 1.5rem;
-        }
-
-        .paper:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        img.paper {
-            width: 180px;
-            height: auto;
-            border-radius: 4px;
-            margin: 0;
-        }
-
-        .paper-content {
-            flex: 1;
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 1.2rem;
-        }
-
-        li {
-            position: relative;
-            padding: 0.5rem 0;
-            margin: 0;
-        }
-
-        li::before {
-            content: "•";
-            color: var(--primary-color);
-            position: absolute;
-            left: -1.2rem;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-
-            .profile-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .paper {
-                flex-direction: column;
-            }
-
-            img.paper {
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-        }
-
-        .clustrmaps {
-            margin-top: 2rem;
-            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         footer {
-            text-align: right;
-            margin-top: 2rem;
-            padding: 1rem 0;
+            text-align: center;
+            padding: 0.5rem 0;
             border-top: 1px solid var(--border-color);
+            font-size: 0.7rem;
+            color: #666;
+            width: 100%;
+        }
+
+        .clustrmaps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
+        }
+
+        .clustrmaps img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-container {
+                grid-template-columns: 300px 1fr 250px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            body {
+                min-height: auto;
+                display: block;
+            }
+            
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                min-height: auto;
+            }
+
+            .profile-section, .main-content, .sidebar {
+                max-height: none;
+                overflow-y: visible;
+            }
+
+            .bottom-section {
+                margin-top: 1.5rem;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<!-- <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-45959174-3', 'ho.github.io');
-      ga('send', 'pageview');
-    
-    </script>
-    -->
 
 <script>
     (function (i, s, o, g, r, a, m) {
@@ -212,151 +396,188 @@
 
     ga('create', 'UA-66888300-1', 'auto');
     ga('send', 'pageview');
-
 </script>
 
 <body>
-    <div class="profile-container">
-        <img class="profile-image" title="Rhys Wu" src="profile.jpg" />
-        <div class="profile-info">
-            <h1>Rui Wu</h1>
-            <p>Deep Learning Engineer</p>
-            <p>Alipay, Ant Group</p>
-            <p>Hangzhou, China</p>
-            <p><strong>Email</strong>: RhysWu [at] outlook [dot] com</p>
-            <div class="social-links">
-                <a href='https://github.com/BarryRun'><img src="img/git.jpg" alt="GitHub" /></a>
-                <a href='https://scholar.google.com/citations?user=9MFTGxUAAAAJ&hl=zh-CN'><img src="img/gs.jpg" alt="Google Scholar" /></a>
-                <a href='https://www.linkedin.cn/injobs/in/%E9%94%90-%E5%90%B4-30636b1a7'><img src="img/in.jfif" alt="LinkedIn" /></a>
-                <a href='https://www.zhihu.com/people/wu-rui-2-95'><img src="img/zh.jpg" alt="Zhihu" /></a>
+    <div class="main-container">
+        <!-- Left Column: Profile & About -->
+        <div class="profile-section">
+            <div class="profile-card">
+                <img class="profile-image" title="Rhys Wu" src="img/527_profile.png" />
+                <h1>Rui Wu</h1>
+                <p><strong>Deep Learning Engineer</strong></p>
+                <p>Alipay, Ant Group</p>
+                <p>Hangzhou, China</p>
+                <p><strong>Email</strong>: RhysWu [at] outlook [dot] com</p>
+                <div class="social-links">
+                    <a href='https://github.com/BarryRun'><img src="img/git.jpg" alt="GitHub" /></a>
+                    <a href='https://scholar.google.com/citations?user=9MFTGxUAAAAJ&hl=zh-CN'><img src="img/gs.jpg" alt="Google Scholar" /></a>
+                    <a href='https://www.linkedin.cn/injobs/in/%E9%94%90-%E5%90%B4-30636b1a7'><img src="img/in.jfif" alt="LinkedIn" /></a>
+                    <a href='https://www.zhihu.com/people/wu-rui-2-95'><img src="img/zh.jpg" alt="Zhihu" /></a>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <div class="paper">
-            <p>I obtained my master degree from Southeast University (SEU) in 2022. After graduation, I joined <a href='https://www.antgroup.com/'>Ant Group</a> as a deep learning engineer. During my time at Alipay, I have conducted research in various domains chronologically: starting with technical risk control systems, then moving on to RAG-based question answering assistants, and later exploring multimodal LLM-based agents. Currently, I am focusing on code copilot technology, dedicated to improving the development efficiency for Alipay engineers.</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>News</h2>
-        <div class="paper">
-            <ul>
-                <li>11/2024: One paper was accepted by NeurIPS 2024(Workshop on Open-World Agents).</li>
-                <li>03/2024: Two papers were accepted by DASFAA 2024(Industry Track).</li>
-                <li>01/2023: One paper was accepted by DASFAA 2023(Industry Track).</li>
-                <li>07/2022: Graduated from Southeast University and joined Ant Group(Alipay).</li>
-                <li>01/2022: One paper was accepted by WWW 2022.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Publications</h2>
-        
-        <div class="paper">
-            <img class="paper" src="img/mobileflow.png" alt="MobileFlow" title="MobileFlow: A Multimodal LLM for Mobile GUI Agent" />
-            <div class="paper-content">
-                <h3>MobileFlow: A Multimodal LLM for Mobile GUI Agent</h3>
-                <p>S. Nong*, J. Zhu*, <strong>R. Wu*</strong>, J. Jin, S. Shan, X. Huang, and W. Xu</p>
-                <p>Neural Information Processing Systems Workshop(<strong>NeurIPS</strong>), 2024.</p>
-                <p><a href='https://arxiv.org/abs/2407.04346'>Paper</a></p>
+            <div class="about-section">
+                <h2>About Me</h2>
+                <p>I obtained my master degree from Southeast University (SEU) in 2022. After graduation, I joined <a href='https://www.antgroup.com/'>Ant Group</a> as a deep learning engineer. During my time at Alipay, I have conducted research in various domains chronologically: starting with technical risk control systems, then moving on to RAG-based question answering assistants, and later exploring multimodal LLM-based agents. Currently, I am focusing on code copilot technology, dedicated to improving the development efficiency for Alipay engineers.</p>
             </div>
         </div>
 
-        <div class="paper">
-            <img class="paper" src="img/mateeval.png" alt="MATEval" title="MATEval: A Multi-Agent Discussion Framework for Advancing Open-Ended Text Evaluation" />
-            <div class="paper-content">
-                <h3>MATEval: A Multi-Agent Discussion Framework for Advancing Open-Ended Text Evaluation</h3>
-                <p>Y. Li, S. Zhang, <strong>R. Wu</strong>, X. Huang, Y. Chen, W. Xu, G. Qi, D. Min</p>
-                <p>International Conference on Database Systems for Advanced Applications(<strong>DASFAA</strong>), 2024.</p>
-                <p><a href='https://arxiv.org/abs/2403.19305'>Paper</a></p>
+        <!-- Middle Column: Publications -->
+        <div class="main-content">
+            <div class="featured-publications">
+                <h2>Featured Publications</h2>
+                
+                <div class="publication-item">
+                    <h4>MobileFlow: A Multimodal LLM for Mobile GUI Agent</h4>
+                    <p class="authors">S. Nong*, J. Zhu*, <strong>R. Wu*</strong>, J. Jin, S. Shan, X. Huang, and W. Xu</p>
+                    <p class="venue">Neural Information Processing Systems Workshop (NeurIPS), 2024</p>
+                    <div class="links">
+                        <a href='https://arxiv.org/abs/2407.04346'>Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h4>MATEval: A Multi-Agent Discussion Framework for Advancing Open-Ended Text Evaluation</h4>
+                    <p class="authors">Y. Li, S. Zhang, <strong>R. Wu</strong>, X. Huang, Y. Chen, W. Xu, G. Qi, D. Min</p>
+                    <p class="venue">International Conference on Database Systems for Advanced Applications (DASFAA), 2024</p>
+                    <div class="links">
+                        <a href='https://arxiv.org/abs/2403.19305'>Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h4>DEE: Dual-stage Explainable Evaluation Method for Text Generation</h4>
+                    <p class="authors">S. Zhang, Y. Li, <strong>R. Wu</strong>, X. Huang, Y. Chen, W. Xu, G. Qi</p>
+                    <p class="venue">International Conference on Database Systems for Advanced Applications (DASFAA), 2024</p>
+                    <div class="links">
+                        <a href='https://arxiv.org/abs/2403.11509'>Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h4>Customer Complaint Guided Fault Localization Based on Domain Knowledge Graph</h4>
+                    <p class="authors">S. Sun, Z. Chai, <strong>R. Wu</strong>, J. Jin, Y. Wang, W. Xu, and G. Qi</p>
+                    <p class="venue">International Conference on Database Systems for Advanced Applications (DASFAA), 2022</p>
+                    <div class="links">
+                        <a href='https://doi.org/10.1007/978-3-031-30678-5_43'>Paper</a>
+                        <a href='papers/slide_ufl.pdf'>Slide</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h4>Conditional Generation Net for Medication Recommendation</h4>
+                    <p class="authors"><strong>R. Wu</strong>, Z. Qiu, J. Jiang, G. Qi, and X. Wu</p>
+                    <p class="venue">The Web Conference (WWW), 2022</p>
+                    <div class="links">
+                        <a href='https://dl.acm.org/doi/10.1145/3485447.3511936'>Paper</a>
+                        <a href='papers/slides_COGNet.pdf'>Slide</a>
+                        <a href='https://github.com/BarryRun/COGNet'>Code</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h4>A Two-Phase Approach for Predicting Highway Passenger Volume</h4>
+                    <p class="authors">Y. Xiang, J. Chen, W. Yu, <strong>R. Wu</strong>, B. Liu, B. Wang, and Z. Li</p>
+                    <p class="venue">Applied Sciences, 2021</p>
+                </div>
+
+                <div class="publication-item">
+                    <h4>LSTM Multi-modal UNet for Brain Tumor Segmentation</h4>
+                    <p class="authors">F. Xu, H. Ma, J. Sun, <strong>R. Wu</strong>, X. Liu, and Y. Kong</p>
+                    <p class="venue">IEEE Conference on Image, Vision and Computing (ICIVC), 2019</p>
+                    <div class="links">
+                        <a href='https://ieeexplore.ieee.org/document/8981027'>Paper</a>
+                        <a href='papers/slides_icivc.pdf'>Presentation</a>
+                        <a href='https://github.com/HowieMa/lstm_multi_modal_UNet'>Code</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="paper">
-            <img class="paper" src="img/dee.png" alt="DEE" title="DEE: Dual-stage Explainable Evaluation Method for Text Generation" />
-            <div class="paper-content">
-                <h3>DEE: Dual-stage Explainable Evaluation Method for Text Generation</h3>
-                <p>S. Zhang, Y. Li, <strong>R. Wu</strong>, X. Huang, Y. Chen, W. Xu, G. Qi</p>
-                <p>International Conference on Database Systems for Advanced Applications(<strong>DASFAA</strong>), 2024.</p>
-                <p><a href='https://arxiv.org/abs/2403.11509'>Paper</a></p>
+        <!-- Right Column: News, Contests, Awards -->
+        <div class="sidebar">
+            <div class="news-section">
+                <h2>News</h2>
+                <div class="news-item">
+                    <span class="news-date">11/2024</span>
+                    <div class="news-content">One paper was accepted by NeurIPS 2024(Workshop on Open-World Agents).</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">03/2024</span>
+                    <div class="news-content">Two papers were accepted by DASFAA 2024(Industry Track).</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">01/2023</span>
+                    <div class="news-content">One paper was accepted by DASFAA 2023(Industry Track).</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">07/2022</span>
+                    <div class="news-content">Graduated from Southeast University and joined Ant Group(Alipay).</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">01/2022</span>
+                    <div class="news-content">One paper was accepted by WWW 2022.</div>
+                </div>
             </div>
-        </div>
 
-        <div class="paper">
-            <img class="paper" src="img/dasfaa_model.png" alt="UFL" title="Customer Complaint Guided Fault Localization Based on Domain Knowledge Graph" />
-            <div class="paper-content">
-                <h3>Customer Complaint Guided Fault Localization Based on Domain Knowledge Graph</h3>
-                <p>S. Sun, Z. Chai, <strong>R. Wu</strong>, J. Jin, Y. Wang, W. Xu, and G. Qi</p>
-                <p>International Conference on Database Systems for Advanced Applications(<strong>DASFAA</strong>), 2022.</p>
-                <p><a href='https://doi.org/10.1007/978-3-031-30678-5_43'>Paper</a> | <a href='papers/slide_ufl.pdf'>Slide</a></p>
+            <div class="contests-section">
+                <h2>Contests</h2>
+                <div class="contest-item">
+                    <strong>Alipay NLP contest: multi-label classification task</strong><br>
+                    <small>Rank: 5/201 (Top 3%)</small>
+                </div>
+                <div class="contest-item">
+                    <strong>Baidu <a href='https://aistudio.baidu.com/aistudio/competition/detail/58/0/introduction'>Entity Linking for Chinese Short Text</a></strong><br>
+                    <small>Rank: 6/112 (Third Prize)</small>
+                </div>
+                <div class="contest-item">
+                    <strong>Biendata <a href='https://www.biendata.xyz/competition/zhihu2019/'>Zhihu-Expert Discovery Algorithm Competition</a></strong><br>
+                    <small>Rank: 33/334 (Top 10%)</small>
+                </div>
             </div>
-        </div>
 
-        <div class="paper">
-            <img class="paper" src="papers/CopyDrug.png" alt="CopyDrug" title="Conditional Generation Net for Medication Recommendation" />
-            <div class="paper-content">
-                <h3>Conditional Generation Net for Medication Recommendation</h3>
-                <p><strong>R. Wu</strong>, Z. Qiu, J. Jiang, G. Qi, and X. Wu</p>
-                <p>The Web Conference(<strong>WWW</strong>), 2022.</p>
-                <p><a href='https://dl.acm.org/doi/10.1145/3485447.3511936'>Paper</a> | <a href='papers/slides_COGNet.pdf'>Slide</a> | <a href='https://github.com/BarryRun/COGNet'>Code</a></p>
+            <div class="awards-section">
+                <h2>Awards</h2>
+                <div class="award-item">
+                    <strong>T Star - Outstanding Engineer</strong><br>
+                    <small>Ant Group, 2025</small>
+                </div>
+                <div class="award-item">
+                    <strong>Outstanding Star Youth</strong><br>
+                    <small>Ant Group, 2024</small>
+                </div>
+                <div class="award-item">
+                    <strong>Sapphire Award - Outstanding Individual</strong><br>
+                    <small>Ant Group, 2023</small>
+                </div>
+                <div class="award-item">
+                    <strong>Excellent Graduate</strong><br>
+                    <small>Southeast University, 2022</small>
+                </div>
+                <div class="award-item">
+                    <strong>Huawei Scholarship</strong><br>
+                    <small>2022</small>
+                </div>
+                <div class="award-item">
+                    <strong>Excellent Graduate</strong><br>
+                    <small>Southeast University, 2019</small>
+                </div>
+                <div class="award-item">
+                    <strong>Principal Scholarship</strong><br>
+                    <small>2018</small>
+                </div>
+                <div class="award-item">
+                    <strong>Min Yu Scholarship</strong><br>
+                    <small>2017</small>
+                </div>
             </div>
-        </div>
-
-        <div class="paper">
-            <img class="paper" src="papers/highway.png" alt="Highway" title="A Two-Phase Approach for Predicting Highway Passenger Volume" />
-            <div class="paper-content">
-                <h3>A Two-Phase Approach for Predicting Highway Passenger Volume</h3>
-                <p>Y. Xiang, J. Chen, W. Yu, <strong>R. Wu</strong>, B. Liu, B. Wang, and Z. Li</p>
-                <p>Applied Sciences, 2021.</p>
-            </div>
-        </div>
-
-        <div class="paper">
-            <img class="paper" src="papers/icivc.png" alt="LSTM UNet" title="LSTM Multi-modal UNet for Brain Tumor Segmentation" />
-            <div class="paper-content">
-                <h3>LSTM Multi-modal UNet for Brain Tumor Segmentation</h3>
-                <p>F. Xu, H. Ma, J. Sun, <strong>R. Wu</strong>, X. Liu, and Y. Kong</p>
-                <p>IEEE Conference on Image, Vision and Computing(<strong>ICIVC</strong>), 2019.</p>
-                <p><a href='https://ieeexplore.ieee.org/document/8981027'>Paper</a> | <a href='papers/slides_icivc.pdf'>Presentation</a> | <a href='https://github.com/HowieMa/lstm_multi_modal_UNet'>Code</a></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Contests</h2>
-        <div class="paper">
-            <ul>
-                <li><strong>Alipay NLP contest: multi-label classification task</strong>, Rank: 5/201 (Top 3%)</li>
-                <li><strong>Baidu <a href='https://aistudio.baidu.com/aistudio/competition/detail/58/0/introduction'>Entity Linking for Chinese Short Text</a></strong>, Rank: 6/112 (Third Prize)</li>
-                <li><strong>Biendata <a href='https://www.biendata.xyz/competition/zhihu2019/'>Zhihu-Expert Discovery Algorithm Competition</a></strong>, Rank: 33/334 (Top 10%)</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Awards</h2>
-        <div class="paper">
-            <ul>
-                <li>Outstanding Star Youth, Ant Group, 2024</li>
-                <li>Sapphire Award - Outstanding Individual, Ant Group, 2023</li>
-                <li>Excellent graduate, Southeast University, 2022</li>
-                <li>Huawei Scholarship, 2022</li>
-                <li>Excellent graduate, Southeast University, 2019</li>
-                <li>Principal Scholarship, 2018</li>
-                <li>Min Yu Scholarship, 2017</li>
-            </ul>
         </div>
     </div>
 
     <footer>
         <p>Published with <a href='https://pages.github.com/'>GitHub Pages</a></p>
     </footer>
-
-    <hr>
 
     <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=aSiVS7XiAP-D8X5xneblJjTCgv8PMWpY_H0Edo_oVdw'></script>
 
