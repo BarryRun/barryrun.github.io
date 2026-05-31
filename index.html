@@ -2,551 +2,252 @@
 <html lang="en">
 
 <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rui Wu | Agent Algorithm Engineer</title>
+    <title>Rhys Wu</title>
     <link rel="shortcut icon" href="logo.jpg">
-    <meta content="Rui Wu, barryrun.github.io, AI Agent, LLM" name="keywords" />
+    <meta name="keywords" content="Rui Wu, BarryRun, AI Agent, LLM, RAG, multimodal agent">
+    <meta name="description" content="Rui Wu's personal homepage.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style media="screen" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
         :root {
-            --primary: #059669; /* Emerald 600 */
-            --primary-light: #D1FAE5; /* Emerald 100 */
-            --surface: #FFFFFF;
-            --bg: #F8FAFC; /* Slate 50 */
-            --text-main: #0F172A; /* Slate 900 */
-            --text-muted: #475569; /* Slate 600 */
-            --border: #E2E8F0; /* Slate 200 */
-            --highlight-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-            --radius-card: 24px;
-            --radius-sm: 8px;
-            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg: #fbfbf7;
+            --ink: #111111;
+            --muted: #5f5d58;
+            --line: #d9d5ca;
+            --accent: #0f766e;
+            --measure: 680px;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-main);
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
             background: var(--bg);
-            line-height: 1.6;
-            padding: 24px;
-            /* Subtle mesh gradient background */
-            background-image: radial-gradient(at 40% 20%, hsla(167, 100%, 86%, 0.1) 0px, transparent 50%),
-                              radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.1) 0px, transparent 50%),
-                              radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.1) 0px, transparent 50%);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            text-rendering: optimizeLegibility;
+            display: grid;
+            place-items: center;
         }
 
         a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: var(--transition);
+            color: var(--ink);
+            text-decoration-color: var(--line);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.18em;
         }
+
         a:hover {
-            opacity: 0.8;
+            color: var(--accent);
+            text-decoration-color: var(--accent);
         }
 
-        /* --- Bento Grid Layout --- */
-        .bento-container {
-            max-width: 1200px;
+        .page {
+            width: min(var(--measure), calc(100% - 44px));
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: minmax(180px, auto);
-            gap: 24px;
+            padding: 42px 0;
         }
 
-        .bento-card {
-            background: var(--surface);
-            border-radius: var(--radius-card);
-            padding: 32px;
-            box-shadow: var(--shadow-card);
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: var(--transition);
-            position: relative;
+        .portrait {
+            width: 116px;
+            height: 116px;
+            display: block;
+            object-fit: cover;
+            border-radius: 3px;
+            border: 1px solid var(--line);
+            margin-bottom: 26px;
         }
 
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Span Controls */
-        .card-profile { grid-column: span 2; grid-row: span 2; text-align: center; align-items: center; justify-content: center; }
-        .card-highlight { grid-column: span 2; grid-row: span 1; background: var(--highlight-bg); color: white; border: none; }
-        .card-about { grid-column: span 2; grid-row: span 1; }
-        .card-pubs { grid-column: span 3; grid-row: span 2; }
-        .card-achievements { grid-column: span 1; grid-row: span 2; }
-        .card-footer { grid-column: span 4; grid-row: span 1; align-items: center; justify-content: center; text-align: center; }
-
-        /* --- Custom Scrollbar for Cards --- */
-        .scroll-area {
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 12px;
-            margin-right: -12px; /* Offset padding */
-        }
-        .scroll-area::-webkit-scrollbar { width: 4px; }
-        .scroll-area::-webkit-scrollbar-track { background: transparent; }
-        .scroll-area::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
-        .scroll-area::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-
-        /* --- Typography & Elements --- */
-        .card-header {
+        .identity {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-main);
+            gap: 28px;
         }
-        .card-highlight .card-header { color: white; }
-        
-        .card-header svg {
-            width: 24px;
-            height: 24px;
-            color: var(--primary);
-        }
-        .card-highlight .card-header svg { color: #34D399; }
 
-        /* Status Badge & Skills */
-        .status-badge {
+        .identity .portrait {
+            flex: 0 0 auto;
+            margin-bottom: 0;
+        }
+
+        .identity-text {
+            min-width: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Source Serif 4", Georgia, serif;
+            font-size: clamp(3.1rem, 12vw, 5.6rem);
+            font-weight: 700;
+            line-height: 0.96;
+            letter-spacing: 0;
+        }
+
+        .alias {
+            margin: 15px 0 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .bio {
+            max-width: 650px;
+            margin: 22px 0 0;
+            color: var(--muted);
+            font-size: 1.06rem;
+        }
+
+        .bio strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .links,
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            margin: 23px 0 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0.98rem;
+        }
+
+        .links {
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .links a {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .links svg {
+            width: 21px;
+            height: 21px;
+            display: block;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        .nav {
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+        }
+
+        .nav a {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            border: 1px solid rgba(5, 150, 105, 0.2);
-        }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(5, 150, 105, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
-        }
-
-        .skill-tags {
-            display: flex;
-            gap: 8px;
             justify-content: center;
-            flex-wrap: wrap;
-            margin: 16px 0 24px 0;
-        }
-        .skill-tags span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 8px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-        .skill-tags span:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
+            min-width: 128px;
+            padding: 8px 16px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            text-decoration: none;
+            color: var(--ink);
         }
 
-        /* Profile */
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--surface);
-            box-shadow: 0 0 0 2px var(--primary-light);
-            margin-bottom: 16px;
-        }
-        .profile-name { font-size: 2rem; font-weight: 700; margin-bottom: 4px; }
-        .profile-title { color: var(--primary); font-weight: 600; margin-bottom: 4px; }
-        .profile-loc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
-        
-        .social-links { display: flex; gap: 12px; justify-content: center; }
-        .social-links a {
-            display: flex; align-items: center; justify-content: center;
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            background: var(--bg);
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-        }
-        .social-links svg { width: 20px; height: 20px; }
-
-        /* About Section Refinement */
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        .about-intro {
-            color: var(--text-main);
-            font-weight: 500;
-        }
-        .about-journey {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-left: 2px solid var(--border);
-            padding-left: 16px;
-            margin-left: 4px;
-        }
-        .journey-item {
-            position: relative;
-        }
-        .journey-item::before {
-            content: '';
-            position: absolute;
-            left: -21px;
-            top: 8px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border);
-        }
-        .journey-item.active::before {
-            background: var(--primary);
-            box-shadow: 0 0 0 3px var(--primary-light);
-        }
-        .journey-label {
-            display: block;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 700;
-            margin-bottom: 2px;
-            color: var(--text-muted);
-        }
-        .journey-item.active .journey-label {
-            color: var(--primary);
-        }
-        .journey-text {
-            display: block;
+        .nav a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
-        /* Items (Pubs, News, Awards) */
-        .list-item {
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .list-item:first-child { padding-top: 0; }
-        .list-item:last-child { border-bottom: none; padding-bottom: 0; }
+        @media (max-width: 560px) {
+            body {
+                font-size: 16px;
+                place-items: start center;
+            }
 
-        .pub-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 8px; line-height: 1.4; }
-        .pub-authors { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
-        .pub-venue {
-            display: inline-block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            background: var(--bg);
-            border-radius: var(--radius-sm);
-            color: var(--text-main);
-            margin-bottom: 12px;
-        }
-        
-        .card-highlight .pub-authors { color: #94A3B8; }
-        .card-highlight .pub-venue { background: rgba(255,255,255,0.1); color: white; }
+            .identity {
+                gap: 18px;
+            }
 
-        .links-group { display: flex; gap: 8px; flex-wrap: wrap; }
-        .links-group a {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            background: var(--surface);
-        }
-        .links-group a:hover { border-color: var(--primary); color: var(--primary); }
+            .portrait {
+                width: 96px;
+                height: 96px;
+            }
 
-        .news-date {
-            display: inline-block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .news-text { font-size: 0.9rem; color: var(--text-main); }
-
-        .award-title { font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
-        .award-meta { font-size: 0.8rem; color: var(--text-muted); }
-        
-        .section-divider {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin: 24px 0 12px 0;
-            font-weight: 700;
-        }
-
-        /* Footer */
-        .footer-content { color: var(--text-muted); font-size: 0.9rem; margin-top: 16px; }
-        .clustrmaps-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 120px;
-            margin: 0 auto;
-            max-width: 260px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-card);
-            background: #F8FAFC;
-        }
-        .clustrmaps-wrapper img,
-        .clustrmaps-wrapper canvas,
-        .clustrmaps-wrapper iframe,
-        .clustrmaps-wrapper .clustrmaps-map-container { max-width: 100%; }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .bento-container { grid-template-columns: repeat(2, 1fr); }
-            .card-pubs { grid-column: span 2; }
-            .card-achievements { grid-column: span 2; }
-        }
-        @media (max-width: 768px) {
-            body { padding: 16px; }
-            .bento-container { grid-template-columns: 1fr; }
-            .bento-card { grid-column: span 1 !important; grid-row: auto !important; padding: 24px; }
-            .scroll-area { max-height: 400px; }
+            .links,
+            .nav {
+                gap: 7px 15px;
+            }
         }
     </style>
 </head>
 
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-66888300-1', 'auto');
-    ga('send', 'pageview');
-</script>
-
 <body>
-    <div class="bento-container">
-        
-        <!-- 1. Profile (2x2) -->
-        <div class="bento-card card-profile">
-            <div class="status-badge">
-                <span class="status-dot"></span>
-                Building Knowledge Base & Memory
+    <main class="page">
+        <div class="identity">
+            <img class="portrait" src="img/527_profile.png" alt="Rui Wu">
+            <div class="identity-text">
+                <h1>Rhys Wu</h1>
+                <p class="alias">publishes as Rui Wu</p>
             </div>
-            
-            <img class="profile-img" src="img/527_profile.png" alt="Rui Wu" />
-            <h1 class="profile-name">Rui Wu</h1>
-            <p class="profile-title">Agent Algorithm Engineer @ Ant Group</p>
-            <p class="profile-loc">Hangzhou, China · RhysWu [at] outlook [dot] com</p>
-            
-            <div class="skill-tags">
-                <span>LLMs</span>
-                <span>AI Agents</span>
-                <span>RAG</span>
-                <span>Memory Systems</span>
-            </div>
+        </div>
 
-            <div class="social-links">
-                <a href='https://github.com/BarryRun' title="GitHub" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        <p class="bio">
+            I am an <strong>Agent Algorithm Engineer</strong> at Ant Group in Hangzhou. I work on LLM-based agents, retrieval-augmented generation, and memory systems for knowledge management.
+        </p>
+
+        <ul class="links" aria-label="Profile links">
+            <li>
+                <a href="mailto:RhysWu@outlook.com" aria-label="Email" title="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
                 </a>
-                <a href='https://scholar.google.com/citations?user=9MFTGxUAAAAJ&hl=zh-CN' title="Google Scholar" aria-label="Google Scholar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            </li>
+            <li>
+                <a href="https://github.com/BarryRun" aria-label="GitHub" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 22v-3.9a3.4 3.4 0 0 0-.95-2.64c3.17-.35 6.5-1.56 6.5-7.03A5.47 5.47 0 0 0 19.09 4.6a5.1 5.1 0 0 0-.09-3.78s-1.18-.38-3.91 1.47a13.4 13.4 0 0 0-7.12 0C5.24.44 4.06.82 4.06.82a5.1 5.1 0 0 0-.09 3.78 5.47 5.47 0 0 0-1.46 3.83c0 5.46 3.33 6.68 6.49 7.03A3.4 3.4 0 0 0 8 18.1V22"></path>
+                        <path d="M8 19c-3 .9-3-1.5-4.2-1.8"></path>
+                    </svg>
                 </a>
-                <a href='https://www.linkedin.cn/injobs/in/%E9%94%90-%E5%90%B4-30636b1a7' title="LinkedIn" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </li>
+            <li>
+                <a href="https://scholar.google.com/citations?user=9MFTGxUAAAAJ&hl=zh-CN" aria-label="Google Scholar" title="Google Scholar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 10 12 5 2 10l10 5 10-5Z"></path>
+                        <path d="M6 12.2V17c3.4 2.7 8.6 2.7 12 0v-4.8"></path>
+                    </svg>
                 </a>
-                <a href='https://www.zhihu.com/people/wu-rui-2-95' title="Zhihu" aria-label="Zhihu">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><text x="12" y="16" text-anchor="middle" font-weight="bold" font-size="14" font-family="sans-serif">知</text></svg>
+            </li>
+            <li>
+                <a href="https://www.zhihu.com/people/wu-rui-2-95" aria-label="Zhihu" title="Zhihu">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M5.721 0C2.251 0 0 2.25 0 5.719V18.28C0 21.751 2.252 24 5.721 24h12.56C21.751 24 24 21.75 24 18.281V5.72C24 2.249 21.75 0 18.281 0zm1.964 4.078c-.271.73-.5 1.434-.68 2.11h4.587c.545-.006.445 1.168.445 1.171H9.384a58.104 58.104 0 0 1-.112 3.797h2.712c.388.023.393 1.251.393 1.266H9.183a9.223 9.223 0 0 1-.408 2.102l.757-.604c.452.456 1.512 1.712 1.906 2.177.473.681.063 2.081.063 2.081l-2.794-3.382c-.653 2.518-1.845 3.607-1.845 3.607-.523.468-1.58.82-2.64.516 2.218-1.73 3.44-3.917 3.667-6.497H4.491c0-.015.197-1.243.806-1.266h2.71c.024-.32.086-3.254.086-3.797H6.598c-.136.406-.158.447-.268.753-.594 1.095-1.603 1.122-1.907 1.155.906-1.821 1.416-3.6 1.591-4.064.425-1.124 1.671-1.125 1.671-1.125zM13.078 6h6.377v11.33h-2.573l-2.184 1.373-.401-1.373h-1.219zm1.313 1.219v8.86h.623l.263.937 1.455-.938h1.456v-8.86z"></path>
+                    </svg>
                 </a>
-            </div>
-        </div>
+            </li>
+        </ul>
 
-        <!-- 2. Highlight Paper (2x1) -->
-        <div class="bento-card card-highlight">
-            <div class="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
-                Latest Highlight
-            </div>
-            <div class="pub-title" style="font-size: 1.2rem; margin-bottom: 12px;">ReFAct: Empowering Multimodal Web Agents with Visual and Context Focusing</div>
-            <div class="pub-authors"><strong>R. Wu*</strong>, S. Zhang*, X. Tang, R. Zhang, Y. Liu, T. Jiang, W. Xu, and Y. Li</div>
-            <div class="pub-venue">IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR), 2026</div>
-        </div>
+        <nav class="nav" aria-label="Site navigation">
+            <a href="publications.html">Publications</a>
+            <a href="awards.html">Awards</a>
+        </nav>
 
-        <!-- 3. About (2x1) -->
-        <div class="bento-card card-about">
-            <div class="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                About Me
-            </div>
-            <div class="about-content">
-                <p class="about-intro">
-                    Master from <strong>SEU</strong> (2022), currently <strong>Agent Algorithm Engineer</strong> at Ant Group (Alipay).
-                </p>
-                
-                <div class="about-journey">
-                    <div class="journey-item">
-                        <span class="journey-label">Experience</span>
-                        <span class="journey-text">Technical Risk · RAG · Multimodal Agents · Code Copilot</span>
-                    </div>
-                    <div class="journey-item active">
-                        <span class="journey-label">Current Focus</span>
-                        <span class="journey-text">Building <strong>Knowledge Base</strong> & <strong>Memory</strong> systems to empower R&D knowledge management.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </main>
 
-        <!-- 4. Publications (3x2) -->
-        <div class="bento-card card-pubs">
-            <div class="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                Featured Publications
-            </div>
-            <div class="scroll-area">
-                <div class="list-item">
-                    <div class="pub-title">MobileFlow: A Multimodal LLM for Mobile GUI Agent</div>
-                    <div class="pub-authors">S. Nong*, J. Zhu*, <strong>R. Wu*</strong>, J. Jin, S. Shan, X. Huang, and W. Xu</div>
-                    <div class="pub-venue">NeurIPS Workshop, 2024</div>
-                    <div class="links-group"><a href='https://arxiv.org/abs/2407.04346'>Paper</a></div>
-                </div>
-                <div class="list-item">
-                    <div class="pub-title">MATEval: A Multi-Agent Discussion Framework for Advancing Open-Ended Text Evaluation</div>
-                    <div class="pub-authors">Y. Li, S. Zhang, <strong>R. Wu</strong>, X. Huang, Y. Chen, W. Xu, G. Qi, D. Min</div>
-                    <div class="pub-venue">DASFAA, 2024</div>
-                    <div class="links-group"><a href='https://arxiv.org/abs/2403.19305'>Paper</a></div>
-                </div>
-                <div class="list-item">
-                    <div class="pub-title">DEE: Dual-stage Explainable Evaluation Method for Text Generation</div>
-                    <div class="pub-authors">S. Zhang, Y. Li, <strong>R. Wu</strong>, X. Huang, Y. Chen, W. Xu, G. Qi</div>
-                    <div class="pub-venue">DASFAA, 2024</div>
-                    <div class="links-group"><a href='https://arxiv.org/abs/2403.11509'>Paper</a></div>
-                </div>
-                <div class="list-item">
-                    <div class="pub-title">Customer Complaint Guided Fault Localization Based on Domain Knowledge Graph</div>
-                    <div class="pub-authors">S. Sun, Z. Chai, <strong>R. Wu</strong>, J. Jin, Y. Wang, W. Xu, and G. Qi</div>
-                    <div class="pub-venue">DASFAA, 2022</div>
-                    <div class="links-group"><a href='https://doi.org/10.1007/978-3-031-30678-5_43'>Paper</a><a href='papers/slide_ufl.pdf'>Slide</a></div>
-                </div>
-                <div class="list-item">
-                    <div class="pub-title">Conditional Generation Net for Medication Recommendation</div>
-                    <div class="pub-authors"><strong>R. Wu</strong>, Z. Qiu, J. Jiang, G. Qi, and X. Wu</div>
-                    <div class="pub-venue">The Web Conference (WWW), 2022</div>
-                    <div class="links-group"><a href='https://dl.acm.org/doi/10.1145/3485447.3511936'>Paper</a><a href='papers/slides_COGNet.pdf'>Slide</a><a href='https://github.com/BarryRun/COGNet'>Code</a></div>
-                </div>
-                <div class="list-item">
-                    <div class="pub-title">A Two-Phase Approach for Predicting Highway Passenger Volume</div>
-                    <div class="pub-authors">Y. Xiang, J. Chen, W. Yu, <strong>R. Wu</strong>, B. Liu, B. Wang, and Z. Li</div>
-                    <div class="pub-venue">Applied Sciences, 2021</div>
-                </div>
-                <div class="list-item">
-                    <div class="pub-title">LSTM Multi-modal UNet for Brain Tumor Segmentation</div>
-                    <div class="pub-authors">F. Xu, H. Ma, J. Sun, <strong>R. Wu</strong>, X. Liu, and Y. Kong</div>
-                    <div class="pub-venue">ICIVC, 2019</div>
-                    <div class="links-group"><a href='https://ieeexplore.ieee.org/document/8981027'>Paper</a><a href='papers/slides_icivc.pdf'>Presentation</a><a href='https://github.com/HowieMa/lstm_multi_modal_UNet'>Code</a></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 5. Achievements (1x2) -->
-        <div class="bento-card card-achievements">
-            <div class="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
-                Achievements
-            </div>
-            <div class="scroll-area">
-                <div class="section-divider" style="margin-top: 0;">Awards</div>
-                <div class="list-item" style="padding-top: 0;">
-                    <div class="award-title">T Star - Outstanding Engineer</div>
-                    <div class="award-meta">Ant Group, 2025</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Outstanding Star Youth</div>
-                    <div class="award-meta">Ant Group, 2024</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Sapphire Award - Outstanding Individual</div>
-                    <div class="award-meta">Ant Group, 2023</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Excellent Graduate</div>
-                    <div class="award-meta">Southeast University, 2022 & 2019</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Huawei Scholarship</div>
-                    <div class="award-meta">2022</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Principal Scholarship</div>
-                    <div class="award-meta">2018</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Min Yu Scholarship</div>
-                    <div class="award-meta">2017</div>
-                </div>
-
-                <div class="section-divider">Contests</div>
-                <div class="list-item" style="padding-top: 0;">
-                    <div class="award-title">Alipay NLP contest: multi-label classification</div>
-                    <div class="award-meta">Rank: 5/201 (Top 3%)</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Baidu Entity Linking for Chinese Short Text</div>
-                    <div class="award-meta">Rank: 6/112 (Third Prize)</div>
-                </div>
-                <div class="list-item">
-                    <div class="award-title">Biendata Zhihu-Expert Discovery Algorithm</div>
-                    <div class="award-meta">Rank: 33/334 (Top 10%)</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 7. Footer & Map -->
-        <div class="bento-card card-footer" style="padding: 24px;">
-            <div class="clustrmaps-wrapper" aria-label="Visitor map">
-                <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=aSiVS7XiAP-D8X5xneblJjTCgv8PMWpY_H0Edo_oVdw"></script>
-            </div>
-            <div class="footer-content">
-                Published with <a href='https://pages.github.com/'>GitHub Pages</a> • Styled with Bento Grid
-            </div>
-        </div>
-    </div>
+    <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2b3d004db5f542ca8002191b3ff31435"}'></script>
+    <!-- End Cloudflare Web Analytics -->
 </body>
+
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards | Rui Wu</title>
+    <link rel="shortcut icon" href="logo.jpg">
+    <meta name="description" content="Awards and contest results by Rui Wu.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #fbfbf7;
+            --ink: #111111;
+            --muted: #5f5d58;
+            --line: #d9d5ca;
+            --accent: #0f766e;
+            --measure: 720px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--bg);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--ink);
+            text-decoration-color: var(--line);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.18em;
+        }
+
+        a:hover {
+            color: var(--accent);
+            text-decoration-color: var(--accent);
+        }
+
+        .page {
+            width: min(var(--measure), calc(100% - 44px));
+            margin: 0 auto;
+            padding: 54px 0 42px;
+        }
+
+        .topline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            margin-bottom: 34px;
+            font-size: 0.95rem;
+        }
+
+        h1,
+        h2 {
+            margin: 0;
+            font-family: "Source Serif 4", Georgia, serif;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 10vw, 4.8rem);
+        }
+
+        h2 {
+            margin-top: 34px;
+            padding-top: 26px;
+            border-top: 1px solid var(--line);
+            font-size: 1.55rem;
+        }
+
+        .award-list {
+            margin: 14px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .award-list li {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) max-content;
+            gap: 20px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .award-title {
+            font-weight: 600;
+        }
+
+        .award-meta {
+            color: var(--muted);
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 560px) {
+            .award-list li {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .award-meta {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <nav class="topline" aria-label="Site navigation">
+            <a href="index.html">Home</a>
+            <a href="publications.html">Publications</a>
+        </nav>
+
+        <h1>Awards</h1>
+        <h2>Honors</h2>
+        <ul class="award-list">
+            <li><span class="award-title">T Star - Outstanding Engineer</span><span class="award-meta">Ant Group, 2025</span></li>
+            <li><span class="award-title">Outstanding Star Youth</span><span class="award-meta">Ant Group, 2024</span></li>
+            <li><span class="award-title">Sapphire Award - Outstanding Individual</span><span class="award-meta">Ant Group, 2023</span></li>
+            <li><span class="award-title">Excellent Graduate</span><span class="award-meta">Southeast University, 2022 and 2019</span></li>
+            <li><span class="award-title">Huawei Scholarship</span><span class="award-meta">2022</span></li>
+            <li><span class="award-title">Principal Scholarship</span><span class="award-meta">2018</span></li>
+            <li><span class="award-title">Min Yu Scholarship</span><span class="award-meta">2017</span></li>
+        </ul>
+
+        <h2>Contests</h2>
+        <ul class="award-list">
+            <li><span class="award-title">Alipay NLP contest: multi-label classification</span><span class="award-meta">Rank 5/201</span></li>
+            <li><span class="award-title">Baidu Entity Linking for Chinese Short Text</span><span class="award-meta">Rank 6/112</span></li>
+            <li><span class="award-title">Biendata Zhihu Expert Discovery Algorithm</span><span class="award-meta">Rank 33/334</span></li>
+        </ul>
+
+    </main>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"2b3d004db5f542ca8002191b3ff31435"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+</body>
+
+</html>
