@@ -318,7 +318,31 @@
 
         /* Footer */
         .footer-content { color: var(--text-muted); font-size: 0.9rem; margin-top: 16px; }
-        .clustrmaps-wrapper { margin: 0 auto; max-width: 250px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-card); }
+        .clustrmaps-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            max-width: 260px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            background: #F8FAFC;
+        }
+        .clustrmaps-wrapper a { display: block; line-height: 0; }
+        .clustrmaps-map {
+            display: block;
+            width: 260px;
+            max-width: 100%;
+            height: auto;
+        }
+        .clustrmaps-fallback {
+            display: none;
+            padding: 16px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -525,8 +549,16 @@
 
         <!-- 7. Footer & Map -->
         <div class="bento-card card-footer" style="padding: 24px;">
-            <div class="clustrmaps-wrapper">
-                <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=aSiVS7XiAP-D8X5xneblJjTCgv8PMWpY_H0Edo_oVdw'></script>
+            <div class="clustrmaps-wrapper" aria-label="Visitor map">
+                <a href="https://clustrmaps.com/" title="Visit tracker">
+                    <img
+                        class="clustrmaps-map"
+                        src="https://www.clustrmaps.com/map_v2.png?cl=ffffff&w=260&t=tt&d=aSiVS7XiAP-D8X5xneblJjTCgv8PMWpY_H0Edo_oVdw"
+                        alt="Visitor map"
+                        onerror="this.closest('.clustrmaps-wrapper').querySelector('.clustrmaps-fallback').style.display='block'; this.closest('a').style.display='none';"
+                    >
+                </a>
+                <div class="clustrmaps-fallback">Visitor map is unavailable in this network.</div>
             </div>
             <div class="footer-content">
                 Published with <a href='https://pages.github.com/'>GitHub Pages</a> • Styled with Bento Grid
